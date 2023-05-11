@@ -1,0 +1,22 @@
+name: Deploy my Front-End AWS Infrastructure
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo main branch
+        uses: actions/checkout@v2
+        
+      - name: Setting up terraform
+        uses: hashicorp/setup-terraform@v1
+        
+      - name: Initializing Terraform
+        run: terraform init
+        working-directory: .
+        
+      - name: Terraform apply
+        run: terraform apply -auto-approve
+        working-directory: .
