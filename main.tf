@@ -21,8 +21,6 @@ provider "aws" {
 }
 
 provider "godaddy" {
-  key    = "gHVNF79APxE9_6CUtzbm9bSy4bV2vFKyn6N"
-  secret = "MGuBNvV96LKiwsjGAVYzEw"
 }
 
 locals {

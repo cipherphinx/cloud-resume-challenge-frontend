@@ -6,7 +6,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
 
   enabled             = true
   is_ipv6_enabled     = true
-  comment             = "Cloudfront for my resume"
+  comment             = "Cloudfront for my s3 static website"
   default_root_object = "index.html"
 
   aliases = ["${var.sub_domain_name}${var.domain_name}"]
@@ -75,6 +75,7 @@ data "aws_acm_certificate" "amazon_issued" {
   provider    = aws.virginia
 }
 
+# Creating a CNAME DNS record in my godaddy domain
 resource "godaddy_domain_record" "cname_record" {
   domain = "arfeljunvelasco.live"
 
@@ -82,7 +83,7 @@ resource "godaddy_domain_record" "cname_record" {
     data = aws_cloudfront_distribution.s3_distribution.domain_name
     name = var.sub_domain_name
     type = "CNAME"
-    ttl = 3600
+    ttl = 1800
   }
 }
 

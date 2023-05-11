@@ -7,7 +7,7 @@ resource "aws_s3_bucket" "s3-resume-bucket" {
   }
 }
 
-# Setting the public access
+# Setting the bucket public access
 resource "aws_s3_bucket_public_access_block" "s3-pub-access-block" {
   bucket = aws_s3_bucket.s3-resume-bucket.id
 
@@ -31,7 +31,7 @@ resource "aws_s3_bucket_website_configuration" "s3-resume-bucket-web-config" {
 
 }
 
-# Setting the bucket policy for public access
+# Setting the s3 bucket policy for public access
 resource "aws_s3_bucket_policy" "allow_access_from_another_account" {
   bucket = aws_s3_bucket.s3-resume-bucket.id
   policy = data.aws_iam_policy_document.allow_access_from_another_account.json
