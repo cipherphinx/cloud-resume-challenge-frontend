@@ -6,10 +6,10 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
 
   enabled             = true
   is_ipv6_enabled     = true
-  comment             = "Some comment"
+  comment             = "Cloudfront for my resume"
   default_root_object = "index.html"
 
-  aliases = [var.cf_domain]
+  aliases = ["${var.sub_domain_name}${var.domain_name}"]
 
   default_cache_behavior {
     allowed_methods  = ["GET", "HEAD"]
@@ -73,5 +73,16 @@ data "aws_acm_certificate" "amazon_issued" {
   types       = ["AMAZON_ISSUED"]
   most_recent = true
   provider    = aws.virginia
+}
+
+resource "godaddy_domain_record" "cname_record" {
+  domain = "arfeljunvelasco.live"
+
+  record {
+    data = aws_cloudfront_distribution.s3_distribution.domain_name
+    name = var.sub_domain_name
+    type = "CNAME"
+    ttl = 3600
+  }
 }
 

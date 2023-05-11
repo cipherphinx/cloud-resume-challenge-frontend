@@ -13,10 +13,18 @@ variable "website_root" {
   default     = "./webfiles"
 }
 
-variable "cf_domain" {
-  default = "resume2.arfeljunvelasco.live"
-}
-
 variable "lambda_function_name" {
   default = "get-visitor-count-function"
+}
+
+//variable "cf_distribution_name" {
+  //default = aws_cloudfront_distribution.s3_distribution.domain_name
+//}
+
+variable "domain_name" {
+  default = ".arfeljunvelasco.live"
+}
+
+variable "sub_domain_name" {
+  default = "resume"
 }
