@@ -55,7 +55,6 @@ data "aws_iam_policy_document" "allow_access_from_another_account" {
   }
 }
 
-/*
 # Uploading the html files to the s3 bucket
 resource "aws_s3_object" "webfiles" {
   for_each = local.website_files
@@ -66,4 +65,4 @@ resource "aws_s3_object" "webfiles" {
   source_hash  = filemd5("${var.website_root}/${each.key}")
   content_type = lookup(local.mime_types, regex("\\.[^.]+$", each.key), null)
 }
-*/
+

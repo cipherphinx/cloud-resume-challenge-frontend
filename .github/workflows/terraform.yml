@@ -40,10 +40,4 @@ jobs:
       - name: Terraform Apply
         run: terraform apply -auto-approve -input=false
 
-      - name: Upload HTML files to S3
-        uses: reggionick/s3-deploy@v3
-        with:
-          folder: webfiles
-          bucket: "arfeljun-velasco-resume"
-          bucket-region: "ap-southeast-1"
 
