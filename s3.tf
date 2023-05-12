@@ -35,12 +35,12 @@ resource "aws_s3_bucket_website_configuration" "s3-resume-bucket-web-config" {
 # Setting the s3 bucket policy for public access
 resource "aws_s3_bucket_policy" "allow_access_from_another_account" {
   bucket = aws_s3_bucket.s3-resume-bucket.id
-  policy = data.aws_iam_policy_document.allow_access_from_another_account.json
+  policy = data.aws_iam_policy_document.allow_access_from_public.json
 
   depends_on = [aws_s3_bucket_public_access_block.s3-pub-access-block]
 }
 
-data "aws_iam_policy_document" "allow_access_from_another_account" {
+data "aws_iam_policy_document" "allow_access_from_public" {
   statement {
     sid = "publicaccesspolicy"
     principals {
@@ -56,6 +56,7 @@ data "aws_iam_policy_document" "allow_access_from_another_account" {
   }
 }
 
+/*
 # Uploading the html files to the s3 bucket
 resource "aws_s3_object" "webfiles" {
   for_each = local.website_files
@@ -66,16 +67,16 @@ resource "aws_s3_object" "webfiles" {
   source_hash  = filemd5("${var.website_root}/${each.key}")
   content_type = lookup(local.mime_types, regex("\\.[^.]+$", each.key), null)
 }
+*/
 
-# Creating a null resource to invalidate the cloudfront cache
+/*
 resource "null_resource" "invalidate_cf_cache" {
-  for_each = local.website_files
-
-  triggers = {
-    website_version_changed = aws_s3_object.webfiles[each.key].version_id
-  }
-
   provisioner "local-exec" {
     command = "aws cloudfront create-invalidation --distribution-id ${aws_cloudfront_distribution.s3_distribution.id} --paths '/*'"
   }
+
+  triggers = {
+    website_version_changed = aws_s3_object.webfiles.version_id
+  }
 }
+*/
