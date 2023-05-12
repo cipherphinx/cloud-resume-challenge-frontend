@@ -7,6 +7,7 @@ resource "aws_s3_bucket" "s3-resume-bucket" {
   }
 }
 
+
 # Setting the bucket public access
 resource "aws_s3_bucket_public_access_block" "s3-pub-access-block" {
   bucket = aws_s3_bucket.s3-resume-bucket.id
@@ -66,3 +67,15 @@ resource "aws_s3_object" "webfiles" {
   content_type = lookup(local.mime_types, regex("\\.[^.]+$", each.key), null)
 }
 
+# Creating a null resource to invalidate the cloudfront cache
+resource "null_resource" "invalidate_cf_cache" {
+  for_each = local.website_files
+
+  triggers = {
+    website_version_changed = aws_s3_object.webfiles[each.key].version_id
+  }
+
+  provisioner "local-exec" {
+    command = "aws cloudfront create-invalidation --distribution-id ${aws_cloudfront_distribution.s3_distribution.id} --paths '/*'"
+  }
+}
