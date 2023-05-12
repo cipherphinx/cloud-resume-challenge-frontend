@@ -9,6 +9,15 @@ terraform {
       version = "1.9.1"
     }
   }
+
+  cloud {
+    organization = "phinx-corporation"
+
+    workspaces {
+      name = "learn-terraform-github-actions"
+    }
+  }
+
 }
 
 provider "aws" {
@@ -21,11 +30,14 @@ provider "aws" {
 }
 
 provider "godaddy" {
+  key    = var.GODADDY_API_KEY
+  secret = var.GODADDY_API_SECRET
 }
 
+
 locals {
-  website_files = fileset(var.website_root, "**")
-  mime_types    = jsondecode(file("mime.json"))
+  // website_files = fileset(var.website_root, "**")
+  // mime_types    = jsondecode(file("mime.json"))
   s3_origin_id  = "myS3Origin"
 }
 
