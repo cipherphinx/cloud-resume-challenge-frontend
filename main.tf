@@ -8,6 +8,10 @@ terraform {
       source  = "n3integration/godaddy"
       version = "1.9.1"
     }
+    null = {
+      source = "hashicorp/null"
+      version = "3.2.1"
+    }
   }
 
   cloud {
@@ -32,6 +36,9 @@ provider "aws" {
 provider "godaddy" {
   key    = var.GODADDY_API_KEY
   secret = var.GODADDY_API_SECRET
+}
+
+provider "null" {
 }
 
 

@@ -66,10 +66,15 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     ssl_support_method  = "sni-only"
   }
 
-  provisioner "local-exec" {
-    command = "aws cloudfront create-invalidation --distribution-id ${self.id} --paths '/*'"
-  }
+}
 
+resource "null_resource" "invalidate_cf_cache" {
+  provisioner "local-exec" {
+    command = "aws cloudfront create-invalidation --distribution-id ${aws_cloudfront_distribution.s3_distribution.id} --paths '/*'"
+  }
+  triggers = {
+    website_version_changed = aws_s3_object.webfiles.version_id
+  }
 }
 
 data "aws_acm_certificate" "amazon_issued" {
