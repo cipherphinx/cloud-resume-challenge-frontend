@@ -66,6 +66,10 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     ssl_support_method  = "sni-only"
   }
 
+  provisioner "local-exec" {
+    command = "aws cloudfront create-invalidation --distribution-id ${self.id} --paths '/'"
+  }
+
 }
 
 data "aws_acm_certificate" "amazon_issued" {
