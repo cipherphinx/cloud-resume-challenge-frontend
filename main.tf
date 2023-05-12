@@ -5,7 +5,7 @@ terraform {
       version = "4.66.1"
     }
     godaddy = {
-      source = "n3integration/godaddy"
+      source  = "n3integration/godaddy"
       version = "1.9.1"
     }
   }
@@ -14,7 +14,7 @@ terraform {
     organization = "phinx-corporation"
 
     workspaces {
-      name = "learn-terraform-github-actions"
+      name = "cloud-resume"
     }
   }
 
@@ -38,7 +38,7 @@ provider "godaddy" {
 locals {
   // website_files = fileset(var.website_root, "**")
   // mime_types    = jsondecode(file("mime.json"))
-  s3_origin_id  = "myS3Origin"
+  s3_origin_id = "myS3Origin"
 }
 
 

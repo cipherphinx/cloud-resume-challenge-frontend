@@ -83,7 +83,7 @@ resource "godaddy_domain_record" "cname_record" {
     data = aws_cloudfront_distribution.s3_distribution.domain_name
     name = var.sub_domain_name
     type = "CNAME"
-    ttl = 1800
+    ttl  = 1800
   }
 }
 
