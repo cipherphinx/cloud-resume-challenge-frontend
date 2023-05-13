@@ -25,10 +25,13 @@ jobs:
         run: terraform init
 
       - name: Terraform Apply
+        run: terraform apply -auto-approve -input=false
+
+      - name: Set the value of Cloudfront Distribution ID
+        id: step_one
         run: |
-         terraform apply -auto-approve -input=false
-         CF_ID=`terraform output`
-         echo "CLOUDFRONT_DISTRIBUTION_ID=$CF_ID" >> $GITHUB_ENV
+          CF_ID=`terraform output`
+          echo "CLOUDFRONT_DISTRIBUTION_ID=$CF_ID" >> ${GITHUB_ENV}
 
       - name: S3/CloudFront Deploy
         uses: staevs/s3-deploy-action@v1.2.2
