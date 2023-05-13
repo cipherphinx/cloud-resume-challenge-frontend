@@ -86,3 +86,7 @@ resource "godaddy_domain_record" "cname_record" {
     ttl  = 1800
   }
 }
+
+output "cloudfront_distribution_id" {
+  value = aws_cloudfront_distribution.s3_distribution.id
+}

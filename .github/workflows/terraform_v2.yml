@@ -19,6 +19,7 @@ jobs:
         with:
           # terraform_version: 1.4.2
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+          terraform_wrapper: false
 
       - name: Terraform Init
         id: init
@@ -33,7 +34,7 @@ jobs:
       - name: Set the value of Cloudfront Distribution ID
         id: step_one
         run: |
-          CF_ID=`terraform output`
+          CF_ID=`terraform output -raw cloudfront_distribution_id`
           echo "CLOUDFRONT_DISTRIBUTION_ID=$CF_ID" >> $GITHUB_ENV
 
       - name: S3/CloudFront Deploy
