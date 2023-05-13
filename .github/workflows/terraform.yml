@@ -41,7 +41,7 @@ jobs:
         run: terraform apply -auto-approve -input=false
 
       - name: S3/CloudFront Deploy
-        uses: staevs/s3-deploy-action@1.2.2
+        uses: staevs/s3-deploy-action@v1.2.2
         if: success()
         with:
           args: --follow-symlinks --delete --no-progress
