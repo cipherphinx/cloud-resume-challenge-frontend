@@ -3,7 +3,7 @@ variable "region" {
 }
 
 variable "BUCKET_NAME" {
-  default = "arfeljun-velasco-resume"
+    default = "arfeljun-velasco-resume"
 }
 
 
