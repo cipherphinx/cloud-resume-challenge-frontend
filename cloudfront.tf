@@ -86,7 +86,3 @@ resource "godaddy_domain_record" "cname_record" {
     ttl  = 1800
   }
 }
-
-
-
-
