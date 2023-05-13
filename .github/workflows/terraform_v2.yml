@@ -28,9 +28,6 @@ jobs:
       - name: Terraform Apply
         run: terraform apply -auto-approve -input=false
 
-      - name: Checkout
-        uses: actions/checkout@v3
-
       - name: Set the value of Cloudfront Distribution ID
         id: step_one
         run: |
