@@ -63,6 +63,6 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: ${{ needs.deploy.outputs.region }}
-          AWS_S3_BUCKET: ${{ needs.deploy.outputs.bucket_name }
+          AWS_S3_BUCKET: ${{ needs.deploy.outputs.bucket_name }}
           CLOUDFRONT_DISTRIBUTION_ID: ${{ needs.deploy.outputs.cf_distribution_id }}
           S3_SOURCE_DIR: './webfiles'
