@@ -21,7 +21,6 @@ terraform {
       name = "cloud-resume"
     }
   }
-
 }
 
 provider "aws" {
@@ -37,10 +36,6 @@ provider "godaddy" {
   key    = var.GODADDY_API_KEY
   secret = var.GODADDY_API_SECRET
 }
-
-provider "null" {
-}
-
 
 locals {
   website_files = fileset(var.website_root, "**")
