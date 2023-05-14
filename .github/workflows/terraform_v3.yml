@@ -30,7 +30,7 @@ jobs:
       - name: Terraform Apply
         run: terraform apply -auto-approve -input=false
 
-      - name: Generate and Output a Secret
+      - name: Generating Output variables
         id: sets-a-secret
         run: |
           CF_ID=`terraform output -raw cloudfront_distribution_id`
