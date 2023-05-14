@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       cf_distribution_id: ${{ steps.sets-a-secret.outputs.CLOUDFRONT_DISTRIBUTION_ID }}
+      bucket_name: ${{ steps.sets-a-secret.outputs.BUCKET_NAME }}
+      region: ${{ steps.sets-a-secret.outputs.REGION }}
 
     steps:
       - name: Checkout
@@ -32,7 +34,11 @@ jobs:
         id: sets-a-secret
         run: |
           CF_ID=`terraform output -raw cloudfront_distribution_id`
+          S3_BUCKET_NAME=`terraform output -raw s3_bucket_name`
+          DEFAULT_REGION=`terraform output -raw region`
           echo "CLOUDFRONT_DISTRIBUTION_ID=$CF_ID" >> $GITHUB_OUTPUT
+          echo "BUCKET_NAME=$S3_BUCKET_NAME" >> $GITHUB_OUTPUT
+          echo "REGION=$DEFAULT_REGION" >> $GITHUB_OUTPUT
 
       #- name: Use that secret output (protected by a mask)
       #  run: |
@@ -55,8 +61,8 @@ jobs:
           args: --follow-symlinks --delete --no-progress
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_REGION: ${{ secrets.AWS_REGION }}
-          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ needs.deploy.outputs.region }}
+          AWS_S3_BUCKET: ${{ needs.deploy.outputs.bucket_name }
           CLOUDFRONT_DISTRIBUTION_ID: ${{ needs.deploy.outputs.cf_distribution_id }}
           S3_SOURCE_DIR: './webfiles'

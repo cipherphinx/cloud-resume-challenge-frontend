@@ -87,6 +87,3 @@ resource "godaddy_domain_record" "cname_record" {
   }
 }
 
-output "cloudfront_distribution_id" {
-  value = aws_cloudfront_distribution.s3_distribution.id
-}
