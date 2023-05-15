@@ -1,4 +1,4 @@
-name: "Deploying infrastructure in AWS"
+name: "Deploying Front-End Infrastructure"
 
 on:
   workflow_dispatch:
