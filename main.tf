@@ -18,7 +18,7 @@ terraform {
     organization = "phinx-corporation"
 
     workspaces {
-      name = "cloud-resume"
+      name = "cloud-resume-frontend"
     }
   }
 }
