@@ -5,7 +5,7 @@ on:
 
 jobs:
   deploy:
-    name: "Terraform"
+    name: "Provisioning Front-End Resources"
     runs-on: ubuntu-latest
     outputs:
       cf_distribution_id: ${{ steps.sets-a-secret.outputs.CLOUDFRONT_DISTRIBUTION_ID }}
