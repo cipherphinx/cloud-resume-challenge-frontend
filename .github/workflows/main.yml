@@ -1,8 +1,10 @@
 name: "Deploying Front-End Infrastructure"
 
 on:
-  workflow_dispatch:
-
+  push:
+    branches:
+      - main
+      
 jobs:
   deploy:
     name: "Provisioning Front-End Resources"
