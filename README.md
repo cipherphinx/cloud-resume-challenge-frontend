@@ -1,4 +1,4 @@
-# My Cloud Resume Challenge
+# My Cloud Resume Challenge (Front-End)
 
 Welcome to my Cloud Resume Challenge implementation! This repository showcases my skills in cloud computing, infrastructure as code, and web development through the creation of a cloud-based resume website.
 
