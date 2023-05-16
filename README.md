@@ -14,7 +14,7 @@ The Cloud Resume Challenge, created by Forrest Brazeal, provides a practical opp
 
 - **GitHub Actions**: Configured Github Actions for CI/CD implementation. Changes commited on the main branch are automatically deployed to my website.
 
-## Serverless Tools Used
+## Serverless Infrastructure Used
 
 - **AWS S3 Bucket**: Used S3 bucket for storaged of my website files and configured to host for static website hosting
 
