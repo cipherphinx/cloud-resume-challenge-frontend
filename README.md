@@ -10,64 +10,24 @@ The Cloud Resume Challenge, created by Forrest Brazeal, provides a practical opp
 
 - **Serverless Framework**: I leveraged the Serverless Framework to define and deploy serverless resources for my website. It simplifies the management of AWS resources and promotes scalability.
 
-- **Terraform / Terraform Cloud**: I utilized Terraform, a cloud-agnostic cloud automation tool to provision my front-end resources in AWS.
+- **Terraform/Terraform Cloud**: I utilized Terraform, a cloud-agnostic cloud automation tool to provision my front-end resources in AWS.
 
-## Project Structure
+- **GitHub Actions**: Configured Github Actions for CI/CD implementation. Changes commited on the main branch are automatically deployed to my website.
 
-The repository structure for my Cloud Resume Challenge implementation is as follows:
+## Serverless Tools Used
 
-```
-.
-├── frontend
-│   ├── public
-│   ├── src
-│   │   ├── components
-│   │   ├── pages
-│   │   ├── services
-│   │   ├── styles
-│   │   ├── App.js
-│   │   └── ...
-│   ├── package.json
-│   └── ...
-├── infrastructure
-│   ├── templates
-│   │   ├── s3-bucket.yaml
-│   │   ├── api-gateway.yaml
-│   │   └── ...
-│   ├── deploy.sh
-│   └── ...
-└── README.md
-```
+- **AWS S3 Bucket**: Used S3 bucket for storaged of my website files and configured to host for static website hosting
 
-- **frontend**: This directory contains the frontend code of my website, including React components, pages, services, and styles.
+- **AWS CloudFront**: Provisioned AWS Cloudfront to serve my website and cache the contents for faster access.
 
-- **infrastructure**: Here, you can find infrastructure templates and deployment scripts for provisioning and managing the necessary cloud resources.
+## Domain Provider
 
-- **README.md**: The file you're currently reading, providing an overview of my Cloud Resume Challenge implementation.
-
-## Getting Started
-
-To run my project locally or deploy it to the cloud, please follow the steps below:
-
-1. Clone this repository to your local machine using the following command:
-
-```bash
-git clone https://github.com/cipherphinx/cloud-resume-challenge-frontend.git
-```
-
-2. Set up the frontend:
-
-- Navigate to the `frontend` folder.
-- Install the dependencies by running `npm install`.
-- Modify the `src` files to customize the content and styling of your resume website.
-- Start the development server using `npm start`.
-
-3. Deploy to the cloud:
-
-- Navigate to the `infrastructure` folder.
-- Customize the infrastructure templates in the `templates` directory to match your desired AWS configuration.
-- Execute the deployment script by running `./deploy.sh` or follow any additional instructions provided.
+- **Go Daddy**: Purchased a domain name in godaddy to be used for my CloudFront and API Gateway domain name
 
 ## Conclusion
 
 Thank you for visiting my Cloud Resume Challenge implementation! I hope this project effectively showcases my cloud skills and demonstrates my ability to develop a professional online presence. Feel free to explore the code, make suggestions, or reach out if you have any questions.
+
+## Cloud Resume Link
+
+[Link to my Cloud Resume](resume.arfeljunvelasco.site)
