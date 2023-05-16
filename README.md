@@ -30,4 +30,4 @@ Thank you for visiting my Cloud Resume Challenge implementation! I hope this pro
 
 ## Cloud Resume Link
 
-[Link to my Cloud Resume](resume.arfeljunvelasco.site)
+[Link to my Cloud Resume](https://resume.arfeljunvelasco.live)
