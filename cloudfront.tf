@@ -1,3 +1,4 @@
+# Creating the Cloudfront resource
 resource "aws_cloudfront_distribution" "s3_distribution" {
   origin {
     domain_name = aws_s3_bucket.s3-resume-bucket.bucket_regional_domain_name
@@ -9,7 +10,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   comment             = "Cloudfront for my s3 static website"
   default_root_object = "index.html"
 
-  aliases = ["${var.sub_domain_name}${var.domain_name}"]
+  aliases = ["${var.sub_domain_name}${var.apex_domain_name}"]
 
   default_cache_behavior {
     allowed_methods  = ["GET", "HEAD"]
@@ -68,6 +69,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
 
 }
 
+# Fetching the acm public certificate issued in us-east-1 region
 data "aws_acm_certificate" "amazon_issued" {
   domain      = "*.arfeljunvelasco.live"
   types       = ["AMAZON_ISSUED"]

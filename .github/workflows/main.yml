@@ -1,9 +1,9 @@
 name: "Deploying Front-End Infrastructure"
 
-on: workflow_dispatch
-  #push:
-    #branches:
-      #- main
+on: #workflow_dispatch
+  push:
+    branches:
+      - main
 jobs:
   deploy:
     name: "Provisioning Front-End Resources"
@@ -40,11 +40,6 @@ jobs:
           echo "CLOUDFRONT_DISTRIBUTION_ID=$CF_ID" >> $GITHUB_OUTPUT
           echo "BUCKET_NAME=$S3_BUCKET_NAME" >> $GITHUB_OUTPUT
           echo "REGION=$DEFAULT_REGION" >> $GITHUB_OUTPUT
-
-      #- name: Use that secret output (protected by a mask)
-      #  run: |
-      #  echo "the secret number is ${{ steps.sets-a-secret.outputs.CLOUDFRONT_DISTRIBUTION_ID }}"
-
 
   upload:
     name: "Upload HTML Files"

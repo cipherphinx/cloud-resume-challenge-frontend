@@ -20,13 +20,16 @@ The Cloud Resume Challenge, created by Forrest Brazeal, provides a practical opp
 
 - **AWS CloudFront**: Provisioned AWS Cloudfront to serve my website and cache the contents for faster access.
 
+## SSL Certificate Provider
+
+- **AWS Certificate Manager**: Created a public certificate in ACM to implement safe browsing with HTTPS
 ## Domain Provider
 
 - **Go Daddy**: Purchased a domain name in godaddy to be used for my CloudFront and API Gateway domain name
 
 ## Conclusion
 
-Thank you for visiting my Cloud Resume Challenge implementation! I hope this project effectively showcases my cloud skills and demonstrates my ability to develop a professional online presence. Feel free to explore the code, make suggestions, or reach out if you have any questions.
+Thank you for visiting my Cloud Resume Challenge implementation! I hope this project effectively showcases my cloud skills and demonstrates my ability to develop a professional online presence. This resume demonstrate that I can learn any tools and implement it if given enough time to explore.
 
 ## Cloud Resume Link
 

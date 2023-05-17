@@ -1,4 +1,4 @@
-# Creating the bucket
+# Creating the bucket resource
 resource "aws_s3_bucket" "s3-resume-bucket" {
   bucket = var.BUCKET_NAME
 
@@ -40,6 +40,7 @@ resource "aws_s3_bucket_policy" "allow_access_from_another_account" {
   depends_on = [aws_s3_bucket_public_access_block.s3-pub-access-block]
 }
 
+# Creating the bucket policy for public access
 data "aws_iam_policy_document" "allow_access_from_public" {
   statement {
     sid = "publicaccesspolicy"
@@ -66,17 +67,5 @@ resource "aws_s3_object" "webfiles" {
   source       = "${var.website_root}/${each.key}"
   source_hash  = filemd5("${var.website_root}/${each.key}")
   content_type = lookup(local.mime_types, regex("\\.[^.]+$", each.key), null)
-}
-*/
-
-/*
-resource "null_resource" "invalidate_cf_cache" {
-  provisioner "local-exec" {
-    command = "aws cloudfront create-invalidation --distribution-id ${aws_cloudfront_distribution.s3_distribution.id} --paths '/*'"
-  }
-
-  triggers = {
-    website_version_changed = aws_s3_object.webfiles.version_id
-  }
 }
 */
